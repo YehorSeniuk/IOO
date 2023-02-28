@@ -1,6 +1,6 @@
-# Модель прецедентів
+# <span style="color: red;"> 🚀 Модель прецедентів</span> 
 
-## 1. Діаграма прецедентів 
+## <span style="color: #FCE100;">☀️1. Діаграма прецедентів </span> 
 @startuml
 
 usecase "Зареєструватись" as NEW_CUSTOMER_CREATE_POLLATION
@@ -24,7 +24,7 @@ usecase "Видалити обліковий запис" as CLIENT_DISTRACTION
 
 Замовець ---|> Клієнт
 @enduml
-## 2. Usecases для клієнта
+## <span style="color: #FCE100;">☀️2. Usecases для клієнта</span> 
 @startuml
 usecase "Зареєструватись" as NEW_CUSTOMER_CREATE_POLLATION
 usecase "Авторизуватись" as CUSTOMER_AUTHORIZATION
@@ -33,7 +33,7 @@ usecase "Видалити обліковий запис" as CLIENT_DISTRACTION
 Клієнт ---> CUSTOMER_AUTHORIZATION
 Клієнт ---> CLIENT_DISTRACTION
 @enduml
-## 3. Usecases для замовця
+## <span style="color: #FCE100;">☀️3. Usecases для замовця</span>
 @startuml
 usecase "Генерувати голосування" as CREATE_POLL
 usecase "Корегувати голосування" as POLL_REDACTION
@@ -47,7 +47,7 @@ usecase "Відправка зпрошення" as SEND_POLL
 Замовець ---> SEND_POLL
 @enduml
 
-## 4. Сценарії
+## <span style="color: #FCE100;">☀️4. Сценарії</span>
 
 | **1. ID:**             | NEW_CUSTOMER_CREATION                                                     |
 | ---------------------- | ------------------------------------------------------------------------- |
