@@ -33,7 +33,7 @@ usecase "Видалити обліковий запис" as CLIENT_DISTRACTION
 Клієнт ---> CUSTOMER_AUTHORIZATION
 Клієнт ---> CLIENT_DISTRACTION
 @enduml
-## 3. Usecases для замовця
+## <span style="color: #FCE100;">☀️3. Usecases для замовця</span>
 @startuml
 usecase "Генерувати голосування" as CREATE_POLL
 usecase "Корегувати голосування" as POLL_REDACTION
@@ -47,7 +47,7 @@ usecase "Відправка зпрошення" as SEND_POLL
 Замовець ---> SEND_POLL
 @enduml
 
-## 4. Сценарії
+## <span style="color: #FCE100;">☀️4. Сценарії</span>
 
 | **1. ID:**             | NEW_CUSTOMER_CREATION                                                     |
 | ---------------------- | ------------------------------------------------------------------------- |
