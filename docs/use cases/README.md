@@ -42,9 +42,28 @@ usecase "Робити замовлення" as MAKE_ORDER
 Замовник ---> MAKE_ORDER
 @enduml
 ## <span style="color: #FCE100;">☀️4. Usecases для аналітика</span>
-
+@startuml
+usecase "Одерження підсумків" as RECEIVE_SUMMARY
+Аналітик ---> RECEIVE_SUMMARY
+@enduml
 ## <span style="color: #FCE100;">☀️5. Usecases для менеджера</span>
-## <span style="color: #FCE100;">☀️6. Usecases для експерат</span>
+@startuml
+usecase "Генерувати голосування" as CREATE_POLL
+usecase "Корегувати голосування" as POLL_REDACTION
+usecase "Знищувати голосування" as POLL_DISTRACTION
+usecase "Відправка зпрошення" as SEND_POLL
+Менеджер ---> CREATE_POLL
+Менеджер ---> POLL_REDACTION
+Менеджер ---> POLL_DISTRACTION
+Менеджер ---> SEND_POLL
+@enduml
+## <span style="color: #FCE100;">☀️6. Usecases для експерта</span>
+@startuml
+usecase "Видалити обліковий запис" as CLIENT_DISTRACTION
+usecase "Проходити голосування" as VOTE
+Експерт ---> CLIENT_DISTRACTION
+Експерт ---> VOTE
+@enduml
 ## <span style="color: #FCE100;">☀️6. Сценарії</span>
 | **1. ID:**             | NEW_CUSTOMER_CREATION                                                     |
 | ---------------------- | ------------------------------------------------------------------------- |
