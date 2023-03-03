@@ -18,9 +18,13 @@ footer: "ECL 2.0 Licensed | Copyright © [YYYY] [Your Name]"
 
 **<span style="color:darkblue;">🦋 Олена Федосєєва</span> email: <a href="mailto:fedosieieva.olena@lll.kpi.ua">fedosieieva.olena@lll.kpi.ua</a>, tg: <a href="https://t.me/HelenFeds">@HelenFeds</a>**<br/>
 
+**<span style="color:darkblue;">☘️ Марія Тулуб</span> email: <a href="mailto:m.m.tulub@gmail.com">m.m.tulub@gmail.com</a>, tg: <a href="https://t.me/Maria_tulub">@Maria_tulub</a>**<br/>
+
 **<span style="color:lightslategray;">🔥 Мар'ян Кравець </span> email: <a href="mailto:fedosieieva.olena@lll.kpi.ua">mariook0204@gmail.com</a>, tg: <a href="https://t.me/mariokarved">@mariokarved</a>**<br/>
 
 **<span style="color:purple;">💡 Олександр Куделя</span> email: <a href="mailto:kudelia.sasha@lll.kpi.ua">kudelia.sasha@lll.kpi.ua</a>, tg: <a href="https://t.me/xolar_kodak">@xolar_kodak</a>**<br/>
+
+**<span style="color:orange;">🐟 Микола Столярчук</span> email: <a href="mailto:mukola1511@gmail.com">mukola1511@gmail.com</a>, tg: <a href="https://t.me/Stolyarchuk4">@Stolyarchuk4</a>**
 
 **<span style="color:orange;">⚡ Єгор Сенюк</span> email: <a href="mailto:seniuk.yehor@gmail.com">seniuk.yehor@gmail.com</a>, tg: <a href="https://t.me/YehorSeniuk">@YehorSeniuk</a>**
 
