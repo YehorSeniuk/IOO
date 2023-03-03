@@ -36,7 +36,7 @@ usecase "Авторизуватись" as CUSTOMER_AUTHORIZATION
 Клієнт ---> NEW_CUSTOMER_CREATE_POLLATION
 Клієнт ---> CUSTOMER_AUTHORIZATION
 @enduml
-## <span style="color: #FCE100;">☀️3. Usecases для замовця</span>
+## <span style="color: #FCE100;">☀️3. Usecases для замовника</span>
 @startuml
 usecase "Робити замовлення" as MAKE_ORDER
 Замовник ---> MAKE_ORDER
