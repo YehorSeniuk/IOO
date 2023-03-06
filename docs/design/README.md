@@ -1,7 +1,8 @@
 # <span style="color:#FDC433">🌕Проєктування бази даних</span>
 
 В рамках проекту розробляється: 
-<span style="color: #FFC839;"> ⭐️ </span> Модель бізнес-об'єктів 
+<br/>
+<h2 style="color: #FFC839;"> ⭐️Модель бізнес-об'єктів </h2>  
 @startuml
  entity Client
  
@@ -34,7 +35,9 @@
   
 
 @enduml
-<span style="color: #FFC839;"> ⭐️ </span> ER-модель
+
+<h2 style="color: #FFC839;"> ⭐️ER-модель </h2> 
+
 @startuml
     entity Client{
   }
@@ -111,5 +114,6 @@
 
  
 @enduml
-<span style="color: #FFC839;"> ⭐️ </span> Реляційна схема
+<h2 style="color: #FFC839;"> ⭐️Реляційна схема </h2> 
+
 ![Image alt](https://github.com/YehorSeniuk/IOO/blob/master/database_scheme.png)
