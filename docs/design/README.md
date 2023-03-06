@@ -116,4 +116,4 @@
 @enduml
 <h2 style="color: #FFC839;"> ⭐️Реляційна схема </h2> 
 
-![Image alt](https://github.com/YehorSeniuk/IOO/blob/master/database_scheme.png)
+<img src="../../database_scheme.png"/>
