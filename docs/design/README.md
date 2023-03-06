@@ -112,4 +112,4 @@
  
 @enduml
 <span style="color: #FFC839;"> ⭐️ </span> Реляційна схема
-
+![Image alt](https://github.com/https://github.com/YehorSeniuk/IOO/blob/master/database_scheme.png)
