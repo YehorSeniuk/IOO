@@ -28,13 +28,25 @@ usecase "Робити замовлення" as MAKE_ORDER
 
 Замовник ---|> Експерт
 Експерт ---|> Клієнт
+Менеджер --|> Клієнт
+Аналітик --|> Експерт
+
 @enduml
 ## <span style="color: #FCE100;">☀️2. Usecases для клієнта</span> 
 @startuml
 usecase "Зареєструватись" as NEW_CUSTOMER_CREATE_POLLATION
 usecase "Авторизуватись" as CUSTOMER_AUTHORIZATION
+usecase "Доадати фото профіля" as ADD_PROFILE_PHOTO
+usecase "Синхронізувати присторіїв" as SYNC
+usecase "Відновити пароль"  as PAS
 Клієнт ---> NEW_CUSTOMER_CREATE_POLLATION
 Клієнт ---> CUSTOMER_AUTHORIZATION
+
+ADD_PROFILE_PHOTO  ...> NEW_CUSTOMER_CREATE_POLLATION: extends
+SYNC ...> NEW_CUSTOMER_CREATE_POLLATION: extends
+PAS ..> CUSTOMER_AUTHORIZATION: extends
+
+
 @enduml
 ## <span style="color: #FCE100;">☀️3. Usecases для замовника</span>
 @startuml
@@ -44,25 +56,49 @@ usecase "Робити замовлення" as MAKE_ORDER
 ## <span style="color: #FCE100;">☀️4. Usecases для аналітика</span>
 @startuml
 usecase "Одерження підсумків" as RECEIVE_SUMMARY
+usecase "Зробити аналіз" as analyz
+usecase "Побудувати графік" as chart
+usecase "Зробити звіт" as total
+
 Аналітик ---> RECEIVE_SUMMARY
+total ...> RECEIVE_SUMMARY: extends
+analyz ...> total: extends
+chart ...> total: extends
 @enduml
 ## <span style="color: #FCE100;">☀️5. Usecases для менеджера</span>
 @startuml
 usecase "Генерувати голосування" as CREATE_POLL
 usecase "Корегувати голосування" as POLL_REDACTION
 usecase "Знищувати голосування" as POLL_DISTRACTION
-usecase "Відправка зпрошення" as SEND_POLL
+usecase "Відправка запрошення" as SEND_POLL
+
+usecase "Налаштувати доступ" as access
+usecase "Підключити стиль" as style
+
+usecase "Оформлення запрошення" as re
+usecase "Налаштування адресації експертів" as add
+
 Менеджер ---> CREATE_POLL
 Менеджер ---> POLL_REDACTION
 Менеджер ---> POLL_DISTRACTION
 Менеджер ---> SEND_POLL
+
+access ...> CREATE_POLL: extends
+style ...> CREATE_POLL: extends
+
+re ..> SEND_POLL: extends
+add ..> SEND_POLL: extends
+
 @enduml
 ## <span style="color: #FCE100;">☀️6. Usecases для експерта</span>
 @startuml
 usecase "Видалити обліковий запис" as CLIENT_DISTRACTION
 usecase "Проходити голосування" as VOTE
+usecase "Отримати метадані" as mt
 Експерт ---> CLIENT_DISTRACTION
 Експерт ---> VOTE
+
+mt ...> VOTE: extends
 @enduml
 ## <span style="color: #FCE100;">☀️7. Сценарії</span>
 | **1. ID:**             | NEW_CUSTOMER_CREATION                                                     |
@@ -81,7 +117,15 @@ usecase "Проходити голосування" as VOTE
 |Клієнт|
 start;
 :Клікає на "Зареєструватись";
-:Заповнює форму;
+
+|Система|
+:Генерує форму реєстрації;
+:Відправляє форму реєстрації;
+
+|Клієнт|
+:Приймає форму реєстрація;
+:Заповнює форму реєстрації;
+:Клікає на "Відправити";
 
 |Система|
 :Перевіряє надані дані;
@@ -90,7 +134,6 @@ start;
 :Надає обліковий запис;
 
 |Клієнт|
-:Завершує взаємодію;
 stop;
 @enduml
 
@@ -109,14 +152,21 @@ stop;
 |Клієнт|
 start;
 :Клікає на "Авторизуватись";
-:Заповнює форму;
+
+|Система|
+:Генерує форму авторизації;
+:Відправляє форму авторизації;
+
+|Клієнт|
+:Приймає форму авторизації;
+:Заповнює форму авторизації;
+:Клікає на "Відправити";
 
 |Система|
 :Перевіряє надані дані;
 :Видає відповідну сторінку клієнту ;
 
 |Клієнт|
-:Завершує взаємодію;
 stop;
 @enduml
 
@@ -135,7 +185,9 @@ stop;
 @startuml
 |Менеджер|
 start;
+:Обирає тип голосування;
 :Робить запит на генерацію\nголосування;
+
 
 |Система|
 :Аналізує запит;
@@ -144,7 +196,6 @@ start;
 :Генерує голосування;
 
 |Менеджер|
-:Завершує взаємодію;
 stop;
 @enduml
 
@@ -167,7 +218,7 @@ start;
 
 
 |Система|
-:переносить замовника на сторінку редагування;
+:Переносить замовника на сторінку редагування;
 
 |Менеджер|
 :Вносить зміни;
@@ -177,7 +228,6 @@ start;
 
 
 |Менеджер|
-:Завершує взаємодію;
 stop;
 
 @enduml
@@ -203,7 +253,6 @@ start;
 :Знищує голосування;
 
 |Менеджер|
-: Завершує взаємодію;
 stop;
 @enduml
 
@@ -227,7 +276,6 @@ start;
 :Видає підсумки голосування;
 
 |Аналітик|
-: Завершує взаємодію;
 stop;
 @enduml
 
@@ -249,7 +297,6 @@ start;
 :Надсилає запрошення ;
 
 |Менеджер|
-: Завершує взаємодію;
 stop;
 @enduml
 
@@ -286,7 +333,6 @@ start;
 
 
 |Експерт|
-:Завершує взаємодію;
 stop;
 @enduml
 
@@ -311,6 +357,7 @@ stop;
 |                        | 3. Система публікує замовлення|
 
 @startuml
+
 |Замовник|
 start;
 : Робить запит на замовлення;
@@ -322,7 +369,6 @@ start;
 
 
 |Замовник|
-: Завершує взаємодію;
 stop;
 @enduml
 
@@ -356,6 +402,5 @@ start;
 : Відправляє заповнену форму;
 
 |Експерт|
-: Завершує взаємодію;
 stop;
 @enduml
