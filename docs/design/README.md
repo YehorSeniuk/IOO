@@ -7,32 +7,58 @@
  entity Client
  
  entity Expert
- entity Expert.id
   
  entity Poll
   
  entity Query
 
-
- entity Response
   
  entity Analytic
   
  entity Manager
 
- entity Patron
+ entity Buyer
 
 
-  Response "0, *" -u-> "1, 1" Query
-  Poll "1, 1" <-u- "0, *"  Query
-  Response "0, *" <-u- "1, 1" Expert
-  Expert "1, 1" <-u- "1, 1" Client
-  Expert "1, 1" -u-> "1, 1" Patron
-  Manager "1, 1" -u-> "0, *" Poll
-  Manager "1, 1" <-u- "0, *" Patron
-  Analytic "1, 1" -u-> "0, *"  Poll
 
-  
+entity Account
+entity Account.email
+entity Account.password
+entity Account.username
+entity Account.id
+
+
+ entity Poll
+ entity Poll.Type
+entity Poll.Description
+ entity Commission
+ entity Commission.Description
+entity Commission.Price
+
+
+
+Client <|-- Manager
+Client <|-- Expert
+Expert <|-- Analytic
+Expert <|-- Buyer
+
+Account.email --* Account
+Account.password --* Account
+Account.username --* Account
+Account.id --* Account
+
+Account "0,*"-- "1,1" Client
+
+Buyer "1,1" -- "0,*" Commission
+
+Commission.Price --* Commission
+Commission.Description --* Commission
+
+Poll.Type ---* Poll
+Poll.Description --* Poll
+Manager "1,1"-- "0,*" Poll
+Query "0,*" -u-o "1,*" Poll
+
 
 @enduml
 
