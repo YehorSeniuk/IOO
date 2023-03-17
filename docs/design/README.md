@@ -4,21 +4,14 @@
 <br/>
 <h2 style="color: #FFC839;"> ⭐️Модель бізнес-об'єктів </h2>  
 @startuml
- entity Client
- 
- entity Expert
+
   
  entity Poll
   
- entity Query
-
-  
- entity Analytic
-  
- entity Manager
-
- entity Buyer
-
+entity Query
+entity Query.id
+entity Query.content
+entity Query.type
 
 
 entity Account
@@ -28,37 +21,60 @@ entity Account.username
 entity Account.id
 
 
- entity Poll
- entity Poll.Type
-entity Poll.Description
- entity Commission
- entity Commission.Description
-entity Commission.Price
+entity Poll
+entity Poll.type
+entity Poll.description
+entity Poll.id
+entity Poll.title
+entity Poll.datetime
+entity Poll.state
 
-
-
-Client <|-- Manager
-Client <|-- Expert
-Expert <|-- Analytic
-Expert <|-- Buyer
-
+entity Role
 Account.email --* Account
 Account.password --* Account
 Account.username --* Account
 Account.id --* Account
 
-Account "0,*"-- "1,1" Client
+entity Option
+entity Option.id
+entity Option.description
+entity Option.type
 
-Buyer "1,1" -- "0,*" Commission
+entity ChosenOption
+entity Answer
+entity Answer.id
+entity Answer.description 
+entity Answer.datetime
 
-Commission.Price --* Commission
-Commission.Description --* Commission
 
-Poll.Type ---* Poll
-Poll.Description --* Poll
-Manager "1,1"-- "0,*" Poll
-Query "0,*" -u-o "1,*" Poll
 
+
+Role "1,*" -u- "1,1"Account
+
+Poll *--- Poll.id
+Poll *--- Poll.description
+Poll *--- Poll.type
+Poll *--- Poll.title
+Poll *--- Poll.datetime
+Poll *--- Poll.state
+
+Query *--- Query.id
+Query *--- Query.content
+Query *--- Query.type
+
+Option *--- Option.id
+Option *--- Option.description
+Option *--- Option.type
+
+Answer *--- Answer.id
+Answer *--- Answer.description
+Answer *--- Answer.datetime
+
+Poll "1,1"--- "0,*" Query
+Query "1,1" --- "0,*" Option
+Query "1,1" --l-- "0,*" Answer
+Option "0,*" --- "1,1" ChosenOption
+ChosenOption "0,*" --- "1,1" Answer
 
 @enduml
 
