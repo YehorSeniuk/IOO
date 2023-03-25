@@ -153,7 +153,7 @@ entity Role <<ENUMERATION>> {
     description: TEXT
 }
 
-Role "1,*" -u- "1,1"Account
+Account "0,*" ->  "1,1" Role
 
 Poll *--- Poll.id
 Poll *--- Poll.description
