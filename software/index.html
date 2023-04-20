@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Реалізація інформаційного та програмного забезпечення | IOO</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/IOO/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="description" content="Лабораторні роботи з дисципліни &quot;Організація баз даних&quot;">
+    
+    <link rel="preload" href="/IOO/assets/css/0.styles.bb58e99c.css" as="style"><link rel="preload" href="/IOO/assets/js/app.0ac78f6b.js" as="script"><link rel="preload" href="/IOO/assets/js/2.10c6bb35.js" as="script"><link rel="preload" href="/IOO/assets/js/23.efe0abea.js" as="script"><link rel="prefetch" href="/IOO/assets/js/10.eb16c742.js"><link rel="prefetch" href="/IOO/assets/js/11.9f95bcea.js"><link rel="prefetch" href="/IOO/assets/js/12.21fae77a.js"><link rel="prefetch" href="/IOO/assets/js/13.d1b4dffa.js"><link rel="prefetch" href="/IOO/assets/js/14.e8321ced.js"><link rel="prefetch" href="/IOO/assets/js/15.b9293569.js"><link rel="prefetch" href="/IOO/assets/js/16.11731dcf.js"><link rel="prefetch" href="/IOO/assets/js/17.7e15e97d.js"><link rel="prefetch" href="/IOO/assets/js/18.7690e920.js"><link rel="prefetch" href="/IOO/assets/js/19.b642b3ee.js"><link rel="prefetch" href="/IOO/assets/js/20.d8eaa887.js"><link rel="prefetch" href="/IOO/assets/js/21.74900f73.js"><link rel="prefetch" href="/IOO/assets/js/22.16336da4.js"><link rel="prefetch" href="/IOO/assets/js/24.ad2811bd.js"><link rel="prefetch" href="/IOO/assets/js/25.3b91fefe.js"><link rel="prefetch" href="/IOO/assets/js/26.d055c4e2.js"><link rel="prefetch" href="/IOO/assets/js/3.2bac3e4e.js"><link rel="prefetch" href="/IOO/assets/js/4.fbcfd4c5.js"><link rel="prefetch" href="/IOO/assets/js/5.60a9c0d1.js"><link rel="prefetch" href="/IOO/assets/js/6.ffcded52.js"><link rel="prefetch" href="/IOO/assets/js/7.4cfc1779.js"><link rel="prefetch" href="/IOO/assets/js/8.abd85a2d.js"><link rel="prefetch" href="/IOO/assets/js/9.e9127873.js">
+    <link rel="stylesheet" href="/IOO/assets/css/0.styles.bb58e99c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/IOO/" class="home-link router-link-active"><!----> <span class="site-name">IOO</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/IOO/" class="nav-link">
+  Початок
+</a></div> <a href="https://github.com/YehorSeniuk/IOO" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/IOO/" class="nav-link">
+  Початок
+</a></div> <a href="https://github.com/YehorSeniuk/IOO" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/IOO/intro/" class="sidebar-link">Вступ</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/IOO/requirements/" class="sidebar-heading clickable"><span>Розроблення загальних вимог до системи</span> <span class="arrow right"></span></a> <!----></section></li><li><a href="/IOO/use%20cases/" class="sidebar-link">Розроблення вимог до функціональности системи</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/IOO/use%20cases/#☀️1-діаграма-прецедентів" class="sidebar-link"></a></li><li class="sidebar-sub-header"><a href="/IOO/use%20cases/#☀️2-usecases-для-клієнта" class="sidebar-link"></a></li><li class="sidebar-sub-header"><a href="/IOO/use%20cases/#☀️3-usecases-для-замовника" class="sidebar-link"></a></li><li class="sidebar-sub-header"><a href="/IOO/use%20cases/#☀️4-usecases-для-аналітика" class="sidebar-link"></a></li><li class="sidebar-sub-header"><a href="/IOO/use%20cases/#☀️5-usecases-для-менеджера" class="sidebar-link"></a></li><li class="sidebar-sub-header"><a href="/IOO/use%20cases/#☀️6-usecases-для-експерта" class="sidebar-link"></a></li><li class="sidebar-sub-header"><a href="/IOO/use%20cases/#☀️7-сценаріі" class="sidebar-link"></a></li></ul></li><li><a href="/IOO/design/" class="sidebar-link">Проектування інформаційного забезпечення</a></li><li><a href="/IOO/software/" aria-current="page" class="active sidebar-link">Реалізація інформаційного та програмного забезпечення</a></li><li><a href="/IOO/test/" class="sidebar-link">Тестування працездатності системи</a></li><li><a href="/IOO/conclusion/" class="sidebar-link">Висновки</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="реалізація-інформаціиного-та-програмного-забезпечення"><a href="#реалізація-інформаціиного-та-програмного-забезпечення" class="header-anchor">#</a> Реалізація інформаційного та програмного забезпечення</h1> <p>В рамках проекту розробляється:</p> <div class="language- extra-class"><pre class="language-text"><code>- SQL-скрипт для створення на початкового наповнення бази даних
+
+-- MySQL Script generated by MySQL Workbench
+-- Thu Apr 20 17:02:45 2023
+-- Model: New Model    Version: 1.0
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `mydb` ;
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Role`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Role` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Role` (
+  `idRole` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `description` VARCHAR(180) NULL,
+  PRIMARY KEY (`idRole`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Account`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Account` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Account` (
+  `idAccount` INT NOT NULL,
+  `email` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
+  `username` VARCHAR(45) NULL,
+  `Role_idRole` INT NOT NULL,
+  PRIMARY KEY (`idAccount`),
+  INDEX `fk_Account_Role1_idx` (`Role_idRole` ASC) VISIBLE,
+  CONSTRAINT `fk_Account_Role1`
+    FOREIGN KEY (`Role_idRole`)
+    REFERENCES `mydb`.`Role` (`idRole`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`PollType`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`PollType` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`PollType` (
+  `idPollType` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  PRIMARY KEY (`idPollType`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Poll`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Poll` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Poll` (
+  `idPoll` INT NOT NULL,
+  `description` VARCHAR(180) NULL,
+  `title` VARCHAR(45) NULL,
+  `datetime` VARCHAR(45) NULL,
+  `PollType_idPollType` INT NOT NULL,
+  PRIMARY KEY (`idPoll`),
+  INDEX `fk_Poll_PollType1_idx` (`PollType_idPollType` ASC) VISIBLE,
+  CONSTRAINT `fk_Poll_PollType1`
+    FOREIGN KEY (`PollType_idPollType`)
+    REFERENCES `mydb`.`PollType` (`idPollType`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`State`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`State` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`State` (
+  `idState` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `description` VARCHAR(180) NULL,
+  PRIMARY KEY (`idState`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Action`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Action` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Action` (
+  `idAction` INT NOT NULL,
+  `datetime` DATETIME NULL,
+  `comment` VARCHAR(180) NULL,
+  `Account_idAccount` INT NOT NULL,
+  `Poll_idPoll` INT NOT NULL,
+  `State_idState` INT NOT NULL,
+  PRIMARY KEY (`idAction`),
+  INDEX `fk_Action_Account_idx` (`Account_idAccount` ASC) VISIBLE,
+  INDEX `fk_Action_Poll1_idx` (`Poll_idPoll` ASC) VISIBLE,
+  INDEX `fk_Action_State1_idx` (`State_idState` ASC) VISIBLE,
+  CONSTRAINT `fk_Action_Account`
+    FOREIGN KEY (`Account_idAccount`)
+    REFERENCES `mydb`.`Account` (`idAccount`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Action_Poll1`
+    FOREIGN KEY (`Poll_idPoll`)
+    REFERENCES `mydb`.`Poll` (`idPoll`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Action_State1`
+    FOREIGN KEY (`State_idState`)
+    REFERENCES `mydb`.`State` (`idState`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`QueryType`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`QueryType` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`QueryType` (
+  `idQueryType` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  PRIMARY KEY (`idQueryType`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Query`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Query` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Query` (
+  `idQuery` INT NOT NULL,
+  `content` VARCHAR(180) NULL,
+  `Poll_idPoll` INT NOT NULL,
+  `QueryType_idQueryType` INT NOT NULL,
+  PRIMARY KEY (`idQuery`),
+  INDEX `fk_Query_Poll1_idx` (`Poll_idPoll` ASC) VISIBLE,
+  INDEX `fk_Query_QueryType1_idx` (`QueryType_idQueryType` ASC) VISIBLE,
+  CONSTRAINT `fk_Query_Poll1`
+    FOREIGN KEY (`Poll_idPoll`)
+    REFERENCES `mydb`.`Poll` (`idPoll`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Query_QueryType1`
+    FOREIGN KEY (`QueryType_idQueryType`)
+    REFERENCES `mydb`.`QueryType` (`idQueryType`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Answer`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Answer` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Answer` (
+  `idAnswer` INT NOT NULL,
+  `description` VARCHAR(180) NULL,
+  `datetime` DATETIME NULL,
+  `Query_idQuery` INT NOT NULL,
+  PRIMARY KEY (`idAnswer`),
+  INDEX `fk_Answer_Query1_idx` (`Query_idQuery` ASC) VISIBLE,
+  CONSTRAINT `fk_Answer_Query1`
+    FOREIGN KEY (`Query_idQuery`)
+    REFERENCES `mydb`.`Query` (`idQuery`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`OptionType`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`OptionType` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`OptionType` (
+  `idOptionType` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  PRIMARY KEY (`idOptionType`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Option`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Option` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Option` (
+  `idOption` INT NOT NULL,
+  `description` VARCHAR(180) NULL,
+  `Query_idQuery` INT NOT NULL,
+  `OptionType_idOptionType` INT NOT NULL,
+  PRIMARY KEY (`idOption`),
+  INDEX `fk_Option_Query1_idx` (`Query_idQuery` ASC) VISIBLE,
+  INDEX `fk_Option_OptionType1_idx` (`OptionType_idOptionType` ASC) VISIBLE,
+  CONSTRAINT `fk_Option_Query1`
+    FOREIGN KEY (`Query_idQuery`)
+    REFERENCES `mydb`.`Query` (`idQuery`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Option_OptionType1`
+    FOREIGN KEY (`OptionType_idOptionType`)
+    REFERENCES `mydb`.`OptionType` (`idOptionType`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`ChosenOption`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`ChosenOption` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`ChosenOption` (
+  `idChosenOption` INT NOT NULL,
+  `datetime` DATETIME NULL,
+  `Answer_idAnswer` INT NOT NULL,
+  `Option_idOption` INT NOT NULL,
+  PRIMARY KEY (`idChosenOption`),
+  INDEX `fk_ChosenOption_Answer1_idx` (`Answer_idAnswer` ASC) VISIBLE,
+  INDEX `fk_ChosenOption_Option1_idx` (`Option_idOption` ASC) VISIBLE,
+  CONSTRAINT `fk_ChosenOption_Answer1`
+    FOREIGN KEY (`Answer_idAnswer`)
+    REFERENCES `mydb`.`Answer` (`idAnswer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ChosenOption_Option1`
+    FOREIGN KEY (`Option_idOption`)
+    REFERENCES `mydb`.`Option` (`idOption`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`StateResolve`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`StateResolve` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`StateResolve` (
+  `idStateResolve` INT NOT NULL,
+  `rule` VARCHAR(45) NULL,
+  `State_idState` INT NOT NULL,
+  PRIMARY KEY (`idStateResolve`),
+  INDEX `fk_StateResolve_State1_idx` (`State_idState` ASC) VISIBLE,
+  CONSTRAINT `fk_StateResolve_State1`
+    FOREIGN KEY (`State_idState`)
+    REFERENCES `mydb`.`State` (`idState`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+</code></pre></div><ul><li>RESTfull сервіс для управління даними</li></ul> <p>RESTfull сервіс</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> fastapi
+<span class="token keyword">from</span> fastapi <span class="token keyword">import</span> FastAPI<span class="token punctuation">,</span> Request
+<span class="token keyword">from</span> fastapi<span class="token punctuation">.</span>responses <span class="token keyword">import</span> JSONResponse
+<span class="token keyword">import</span> pymysql
+
+app <span class="token operator">=</span> FastAPI<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">DataBase</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">__new__</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> <span class="token builtin">hasattr</span><span class="token punctuation">(</span>cls<span class="token punctuation">,</span> <span class="token string">'instance'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            cls<span class="token punctuation">.</span>instance <span class="token operator">=</span> <span class="token builtin">super</span><span class="token punctuation">(</span>DataBase<span class="token punctuation">,</span> cls<span class="token punctuation">)</span><span class="token punctuation">.</span>__new__<span class="token punctuation">(</span>cls<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> cls<span class="token punctuation">.</span>instance
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>connection <span class="token operator">=</span> <span class="token boolean">None</span>
+        self<span class="token punctuation">.</span>cursor <span class="token operator">=</span> <span class="token boolean">None</span>
+        self<span class="token punctuation">.</span>__connect<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+    <span class="token keyword">def</span> <span class="token function">__connect</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>connection <span class="token operator">=</span> pymysql<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>
+            host<span class="token operator">=</span><span class="token string">'127.0.0.1'</span><span class="token punctuation">,</span>
+            port<span class="token operator">=</span><span class="token number">3306</span><span class="token punctuation">,</span>
+            user<span class="token operator">=</span><span class="token string">'root'</span><span class="token punctuation">,</span>
+            password<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span>
+            database<span class="token operator">=</span><span class="token string">'ioo'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>cursor <span class="token operator">=</span> self<span class="token punctuation">.</span>connection<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span>pymysql<span class="token punctuation">.</span>cursors<span class="token punctuation">.</span>DictCursor<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">execute</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> command<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>command<span class="token punctuation">)</span>
+        result <span class="token operator">=</span> self<span class="token punctuation">.</span>cursor<span class="token punctuation">.</span>fetchall<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>connection<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> result
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">&quot;/api/allusers&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">get_users</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    db <span class="token operator">=</span> DataBase<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> JSONResponse<span class="token punctuation">(</span>db<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string">'SELECT * FROM account'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">'/api/user/{id}'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">get_user_by_id</span><span class="token punctuation">(</span><span class="token builtin">id</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    db <span class="token operator">=</span> DataBase<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    result <span class="token operator">=</span> db<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'SELECT * FROM account WHERE idAccount=</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token builtin">id</span><span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> result<span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> fastapi<span class="token punctuation">.</span>HTTPException<span class="token punctuation">(</span>status_code<span class="token operator">=</span><span class="token number">404</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> JSONResponse<span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>post</span><span class="token punctuation">(</span><span class="token string">'/api/adduser'</span><span class="token punctuation">,</span> status_code<span class="token operator">=</span><span class="token number">201</span><span class="token punctuation">)</span>
+<span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">add_new_user</span><span class="token punctuation">(</span>req<span class="token punctuation">:</span> Request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    req_dict <span class="token operator">=</span> <span class="token keyword">await</span> req<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        email <span class="token operator">=</span> req_dict<span class="token punctuation">[</span><span class="token string">'email'</span><span class="token punctuation">]</span>
+        password <span class="token operator">=</span> req_dict<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+        username <span class="token operator">=</span> req_dict<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span>
+        id_role <span class="token operator">=</span> req_dict<span class="token punctuation">[</span><span class="token string">'Role_idRole'</span><span class="token punctuation">]</span>
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> fastapi<span class="token punctuation">.</span>HTTPException<span class="token punctuation">(</span>status_code<span class="token operator">=</span><span class="token number">400</span><span class="token punctuation">)</span>
+    db <span class="token operator">=</span> DataBase<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    db<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f&quot;INSERT INTO `account`(`email`, `password`, `username`, `Role_idRole`) VALUES ('</span><span class="token interpolation"><span class="token punctuation">{</span>email<span class="token punctuation">}</span></span><span class="token string">','</span><span class="token interpolation"><span class="token punctuation">{</span>password<span class="token punctuation">}</span></span><span class="token string">','</span><span class="token interpolation"><span class="token punctuation">{</span>username<span class="token punctuation">}</span></span><span class="token string">',</span><span class="token interpolation"><span class="token punctuation">{</span>id_role<span class="token punctuation">}</span></span><span class="token string">);&quot;</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">'message'</span><span class="token punctuation">:</span> <span class="token string">'New user added!'</span><span class="token punctuation">}</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>put</span><span class="token punctuation">(</span><span class="token string">'/api/updateuser/{id}'</span><span class="token punctuation">)</span>
+<span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">update_user</span><span class="token punctuation">(</span><span class="token builtin">id</span><span class="token punctuation">,</span> req<span class="token punctuation">:</span> Request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    req_dict <span class="token operator">=</span> <span class="token keyword">await</span> req<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    db <span class="token operator">=</span> DataBase<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> key <span class="token keyword">in</span> req_dict<span class="token punctuation">:</span>
+         <span class="token keyword">if</span> <span class="token keyword">not</span> db<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'SELECT * FROM account WHERE idAccount=</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token builtin">id</span><span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">raise</span> fastapi<span class="token punctuation">.</span>HTTPException<span class="token punctuation">(</span>status_code<span class="token operator">=</span><span class="token number">404</span><span class="token punctuation">)</span>
+         db<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'UPDATE account SET </span><span class="token interpolation"><span class="token punctuation">{</span>key<span class="token punctuation">}</span></span><span class="token string">=&quot;</span><span class="token interpolation"><span class="token punctuation">{</span>req_dict<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">&quot; WHERE idAccount=</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token builtin">id</span><span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">&quot;message&quot;</span><span class="token punctuation">:</span> <span class="token string">'Updated!'</span><span class="token punctuation">}</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>delete</span><span class="token punctuation">(</span><span class="token string">'/api/deleteuser/{id}'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">delete</span><span class="token punctuation">(</span><span class="token builtin">id</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    db <span class="token operator">=</span> DataBase<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> db<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'SELECT * FROM account WHERE idAccount=</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token builtin">id</span><span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> fastapi<span class="token punctuation">.</span>HTTPException<span class="token punctuation">(</span>status_code<span class="token operator">=</span><span class="token number">404</span><span class="token punctuation">)</span>
+    db<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'DELETE FROM `account` WHERE idAccount=</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token builtin">id</span><span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">'message'</span><span class="token punctuation">:</span> <span class="token string-interpolation"><span class="token string">f'User with id=</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token builtin">id</span><span class="token punctuation">}</span></span><span class="token string"> deleted'</span></span><span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Останнє оновлення:</span> <span class="time">4/20/2023, 5:30:05 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/IOO/design/" class="prev">
+        Проектування інформаційного забезпечення
+      </a></span> <span class="next"><a href="/IOO/test/">
+        Тестування працездатності системи
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/IOO/assets/js/app.0ac78f6b.js" defer></script><script src="/IOO/assets/js/2.10c6bb35.js" defer></script><script src="/IOO/assets/js/23.efe0abea.js" defer></script>
+  </body>
+</html>
