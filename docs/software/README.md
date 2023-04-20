@@ -285,6 +285,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 - RESTfull сервіс для управління даними
 
 RESTfull сервіс
+```python
 import fastapi
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
@@ -371,4 +372,4 @@ def delete(id):
         raise fastapi.HTTPException(status_code=404)
     db.execute(f'DELETE FROM `account` WHERE idAccount={id}')
     return {'message': f'User with id={id} deleted'}
-
+```
