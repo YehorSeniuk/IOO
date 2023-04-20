@@ -1,9 +1,9 @@
 # 1.  Усі аккаунти бази даних (GET)
-<img src="../../images/1.jpg"/>
+<img src="../../images/1.jpg">
 # 2.1 Додавання нового аккаунту (POST)
-<img src="../../images/2.1.jpg"/>
+<img src="../../images/2.1.jpg">
 # 2.2 Перевірка, на місці (POST)
-<img src="../../images/2.2.jpg"/>
+<img src="../../images/2.2.jpg">
 # 2.3 Передача не всіх необхідних даних (POST)
 <img src="../../images/2.3.jpg"/>
 # 3.1 Пошук аккаунту по id (GET)
