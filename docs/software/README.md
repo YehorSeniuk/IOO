@@ -284,3 +284,4 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 - RESTfull сервіс для управління даними
 
+RESTfull сервіс
